@@ -9,18 +9,18 @@
         }
     ],
     "minimum-stability": "dev",
-    "prefer-stable": true,
+    "prefer-stable": false,
     "require": {
         "php": ">=5.6.0",
         "illuminate/support": ">=5.0.0",
-        "orchid/socket": "^1.6"
+        "cboden/ratchet": "dev-master"
     },
     "autoload": {
         "files": [
             "src/helpers.php"
         ],
         "psr-4": {
-            "\\POPsy\\UserMonitor\\": "src/"
+            "POPsy\\UserMonitor\\": "src/"
         }
     }
 }
