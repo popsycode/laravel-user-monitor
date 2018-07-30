@@ -1,0 +1,26 @@
+{
+  "name": "popsycode/laravel-user-monitor",
+  "description": "laravel-user-monitor",
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "require": {
+    "php": ">=5.6.0",
+    "illuminate/support": ">=5.0.0",
+    "orchid/socket": "^1.6"
+  },
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "POPsy",
+      "email": "popsy2007@mail.ru"
+    }
+  ],
+  "autoload": {
+    "files": [
+      "src/helpers.php"
+    ],
+    "psr-4": {
+      "POPsy\\UserMonitor\\": "src/"
+    }
+  }
+}
