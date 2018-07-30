@@ -1,6 +1,6 @@
 <?php
 
-namespace Orchid\Socket;
+namespace POPsy\UserMonitor;
 
 use Ratchet\ConnectionInterface;
 use Ratchet\MessageComponentInterface;

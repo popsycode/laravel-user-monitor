@@ -3,7 +3,6 @@
 namespace POPsy\UserMonitor;
 
 use Illuminate\Session\SessionManager;
-use Orchid\Socket\BaseSocketListener;
 use Ratchet\ConnectionInterface;
 
 class UserMonitorSocket extends BaseSocketListener
