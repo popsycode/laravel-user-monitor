@@ -13,6 +13,7 @@ class UserMonitorSocket extends BaseSocketListener
      * @var \SplObjectStorage
      */
     protected $clients;
+    protected $userList = [];
 
     /**
      * UserMonitorSocket constructor.
@@ -47,7 +48,10 @@ class UserMonitorSocket extends BaseSocketListener
         }
 
         // Get the cookies
-        $cookies = $conn->WebSocket->request->getCookies();
+        $cookiesRaw = $conn->httpRequest->getHeader('Cookie');
+        if(count($cookiesRaw)) {
+            $cookies = \GuzzleHttp\Psr7\parse_header($cookiesRaw)[0]; // Array of cookies
+        }
 
         // Get the laravel's one
         $laravelCookie = urldecode($cookies[\Config::get('session.cookie')]);
@@ -64,6 +68,7 @@ class UserMonitorSocket extends BaseSocketListener
 
         //We take the user from a session
         $userId = $conn->session->get(\Auth::getName());
+        \Auth::loginUsingId($userId);
         return $userId;
     }
 
@@ -85,6 +90,8 @@ class UserMonitorSocket extends BaseSocketListener
      */
     public function onClose(ConnectionInterface $conn)
     {
+        $userId = \Auth::id();
+        echo "Disconnect user_id = ({$userId})\n";
         $this->clients->detach($conn);
     }
 

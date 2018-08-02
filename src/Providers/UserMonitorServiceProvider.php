@@ -33,7 +33,10 @@ class UserMonitorServiceProvider extends ServiceProvider
             __DIR__.'/../../config/config.php' => app()->basePath() . '/config/user-monitor.php',
 
         ], 'user-monitor');
-        include __DIR__.'/../routes.php';
+
+        $this->publishes([
+            __DIR__.'/../../resources/' => resource_path('/')
+        ], 'user-monitor-resources');
 
         $this->registerProviders();
         $this->mergeConfig();
@@ -69,7 +72,7 @@ class UserMonitorServiceProvider extends ServiceProvider
     private function mergeConfig()
     {
         $this->mergeConfigFrom(
-            __DIR__.'/../config/config.php', 'user-monitor'
+            __DIR__.'/../../config/config.php', 'user-monitor'
         );
     }
 

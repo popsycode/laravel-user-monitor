@@ -1,6 +1,6 @@
 <?php
 
-namespace Orchid\Socket\Console;
+namespace POPsy\UserMonitor\Console;
 
 use Illuminate\Console\Command;
 use POPsy\UserMonitor\UserMonitorSocket;
@@ -45,7 +45,7 @@ class Server extends Command
      */
     public function __construct()
     {
-        $config = config('socket');
+        $config = config('user-monitor');
         $this->httpHost = $config['httpHost'];
         $this->port = $config['port'];
         $this->address = $config['address'];
